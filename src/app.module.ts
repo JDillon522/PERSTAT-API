@@ -1,12 +1,21 @@
 import { Module } from '@nestjs/common';
-import { AppService } from './app.service';
-import { AppController } from './controllers/app.controller';
+import { ConfigModule } from '@nestjs/config';
 import { BotUserController } from './controllers/bot-user/bot-user.controller';
 import { SlackService } from './services/slack/slack.service';
+import { DatabaseService } from './services/database/database.service';
 
 @Module({
-  imports: [],
-  controllers: [AppController, BotUserController],
-  providers: [AppService, SlackService],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true
+    })
+  ],
+  controllers: [
+    BotUserController
+  ],
+  providers: [
+    SlackService,
+    DatabaseService
+  ],
 })
 export class AppModule {}
