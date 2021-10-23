@@ -7,11 +7,16 @@ import { SlackUserService } from './services/slack-user/slack-user.service';
 import { BotUserService } from './services/bot-user/bot-user.service';
 import { TeamService } from './services/team/team.service';
 import { TeamController } from './controllers/team/team.controller';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'web', 'dist', 'web')
     })
   ],
   controllers: [
