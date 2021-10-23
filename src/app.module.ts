@@ -16,7 +16,7 @@ import { join } from 'path';
       isGlobal: true
     }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'web', 'dist', 'web')
+      rootPath: join(__dirname, '..', '..', 'web', 'dist', 'web')
     })
   ],
   controllers: [
