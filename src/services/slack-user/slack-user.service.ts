@@ -9,7 +9,7 @@ export class SlackUserService {
         private slackService: SlackService
     ) { }
 
-    public async getBotUsers() {
+    public async getSlackUsers(): Promise<Member[]> {
         const usersList = await this.slackService.app.client.users.list();
         let users: Member[] = usersList.members?.filter(user => !user.is_bot && !user.deleted && user.name != 'slackbot') || [];
 

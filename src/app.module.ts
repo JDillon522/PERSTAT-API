@@ -5,6 +5,8 @@ import { SlackService } from './services/slack/slack.service';
 import { DatabaseService } from './services/database/database.service';
 import { SlackUserService } from './services/slack-user/slack-user.service';
 import { BotUserService } from './services/bot-user/bot-user.service';
+import { TeamService } from './services/team/team.service';
+import { TeamController } from './controllers/team/team.controller';
 
 @Module({
   imports: [
@@ -13,13 +15,15 @@ import { BotUserService } from './services/bot-user/bot-user.service';
     })
   ],
   controllers: [
-    BotUserController
+    BotUserController,
+    TeamController
   ],
   providers: [
     SlackService,
     DatabaseService,
     SlackUserService,
-    BotUserService
+    BotUserService,
+    TeamService
   ],
 })
 export class AppModule {}
