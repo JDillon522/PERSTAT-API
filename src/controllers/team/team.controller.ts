@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { Role } from 'src/models/team';
 import { TeamService } from 'src/services/team/team.service';
 
-@Controller('team')
+@Controller('api/team')
 export class TeamController {
 
     constructor(

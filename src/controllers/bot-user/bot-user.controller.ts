@@ -5,7 +5,7 @@ import { SlackUserService } from 'src/services/slack-user/slack-user.service';
 import { Member } from '@slack/web-api/dist/response/UsersListResponse';
 import { sortBy } from 'lodash';
 
-@Controller('bot-user')
+@Controller('api/bot-user')
 export class BotUserController {
 
     constructor(
