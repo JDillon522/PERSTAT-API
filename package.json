@@ -9,7 +9,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "prebuild": "rimraf dist && cd ./web && npm install && cd .. && .web/node_modules/.bin/ng build",
+    "prebuild": "rimraf dist && cd ./web && npm install && cd .. && ./web/node_modules/.bin/ng build",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
