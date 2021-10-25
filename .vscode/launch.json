@@ -5,24 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Debug API",
             "type": "node",
-            "request": "launch",
-            "name": "Debug Nest Framework",
-            "args": [
-                "${workspaceFolder}/src/main.ts"
-            ],
-            "runtimeArgs": [
-                "--nolazy",
-                "-r",
-                "ts-node/register",
-                "-r",
-                "tsconfig-paths/register"
-            ],
-            "sourceMaps": true,
-            "envFile": "${workspaceFolder}/.env",
-            "cwd": "${workspaceRoot}",
-            "console": "integratedTerminal",
-            "protocol": "inspector"
-        }
+            "request": "attach",
+            "port": 9229
+          }
     ]
 }
