@@ -5,8 +5,8 @@ export interface BotUserInfoDto {
     slack_id: string;
     perstat_required: boolean;
     included_in_report: boolean;
-    assigned_team: boolean;
-    team_role: string;
+    team_name: string;
+    role: string;
 }
 
 export interface User {
@@ -15,5 +15,6 @@ export interface User {
     name: string;
     perstat_required: boolean;
     included_in_report: boolean;
-    team?: AssignedTeam;
+    role: string;
+    team_name: string;
 }

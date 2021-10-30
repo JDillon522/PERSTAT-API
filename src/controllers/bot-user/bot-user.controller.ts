@@ -1,11 +1,11 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Put } from '@nestjs/common';
 import { BotUserInfoDto, User } from 'src/models/user';
 import { BotUserService } from 'src/services/bot-user/bot-user.service';
 import { SlackUserService } from 'src/services/slack-user/slack-user.service';
 import { Member } from '@slack/web-api/dist/response/UsersListResponse';
 import { sortBy } from 'lodash';
 
-@Controller('bot-user')
+@Controller('api/bot-user')
 export class BotUserController {
 
     constructor(
@@ -19,6 +19,13 @@ export class BotUserController {
         const slackUsers = await this.slack.getSlackUsers();
 
         return this.normalizeSlackAndBotUsers(botUsers, slackUsers);
+    }
+
+    @Put()
+    public async updateUser(@Body() updateUser: User): Promise<BotUserInfoDto> {
+        const updatedDbUser = await this.botUser.updateDbUser(updateUser);
+
+        return updatedDbUser;
     }
 
     private async normalizeSlackAndBotUsers(bot: BotUserInfoDto[], slack: Member[]): Promise<User[]> {
@@ -37,7 +44,9 @@ export class BotUserController {
                 slack_id: user.id,
                 name: user.real_name,
                 perstat_required: dbUser.perstat_required,
-                included_in_report: dbUser.included_in_report
+                role: dbUser.role,
+                included_in_report: dbUser.included_in_report,
+                team_name: dbUser.team_name
             });
         }
 
