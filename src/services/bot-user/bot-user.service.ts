@@ -18,7 +18,7 @@ export class BotUserService {
             included_in_report,
             team_name,
             public."TEAM_ROLE".role
-            FROM public."BOT_USER_INFO"
+        FROM public."BOT_USER_INFO"
         LEFT JOIN public."TEAM"
             on public."BOT_USER_INFO".assigned_team = public."TEAM".id
         LEFT JOIN public."TEAM_ROLE"
